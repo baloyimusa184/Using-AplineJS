@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using AlpineJS</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    
+    <div x-data="{counter : 0}"> 
+        <h2>Increment/decrement With AlpineJS</h2>
+        <div x-text="counter">
+        </div>
+        <button @click="counter++">Increment</button>
+        <button @click="if (counter>0){counter--}">Decrement</button>
+
+    </div>
+
+    <hr>
+
+    <div x-data="{ 
+        open: false,
+        name: 'Musa',
+        search: 'Hello its Me you looking for',
+        post: [
+        {title:'Post 1'},
+        {title:'Post 2'},
+        {title:'Post 3'}
+        ]
+    }">
+        <button @click="open = !open" class="bg-gray-200" text-black px-4 py-2 rounded-xl>Show</button>
+     
+        <div x-show="open">
+            Look Below and its:
+        </div>  
+    <div x-show="open">
+        <p class="bg-gray-200 p-4 my-6 rounded" x-transition> 
+            Coffee coding session!
+            And my name is <span x-text="name"></span>
+        </p>      
+      </div>
+      <!--Adding an alert:-->
+     <!--- <div x-effect="alert(open)"></div>-->
+     <br>
+     
+     <!-- x-model -->
+     <div>
+        <input 
+        x-model="search"
+        type="text" 
+        class="border p-2 w-full mb-2 mt-6" 
+        placeholder="Seach for something..."
+        />
+        <p>
+            <span class="font-bold">Searching for:</span>
+            <span x-text="search"></span>
+        </p>
+
+        <!-- using x-if -->
+        <template x-if="open">
+           <div class="bg-gray-50 p-2 mt-8">Opened the template based on condition</div>
+        </template>
+
+        <!-- using for loop -->
+     <h3 class="text-2xl mt-6 mb-3 font-bold">Posts</h3>
+   <template x-for="post">
+    <div x-text="post.title"></div>
+   </template>
+     </div>
+    </div>
+</body>
+
+</html>
